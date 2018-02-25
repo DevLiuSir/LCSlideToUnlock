@@ -13,8 +13,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .gray
-        
         /******* LCSlideToUnlockView *******/
         let slideToUnlockView = LCSlideToUnlockView(frame: CGRect(x: 0, y: view.bounds.height - 100, width: view.bounds.width, height: 40))
         slideToUnlockView.textStr = "> Slide To Unlock "
@@ -22,6 +20,8 @@ class ViewController: UIViewController {
         slideToUnlockView.shimmerColors = [.white, .white]
         //slideToUnlockView.shimmerImage = UIImage(named: "gradient")
         slideToUnlockView.font = UIFont.systemFont(ofSize: 20)
+        slideToUnlockView.AnimationStyle = .DownAndUp
+        slideToUnlockView.isEnableAutoreverses = true
         slideToUnlockView.showFadeWithDuration(4)
         view.addSubview(slideToUnlockView)
     }

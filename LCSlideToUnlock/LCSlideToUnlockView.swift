@@ -8,6 +8,15 @@
 
 import UIKit
 
+/// 动画类型
+///
+/// - Default: 默认(左到右)
+/// - DownAndUp: 从下到上
+enum slideAnimationType {
+    case Default
+    case DownAndUp
+}
+
 /// locations: 分割动画
 private let LCgradientViewAnimationKey = "locations"
 
@@ -15,6 +24,12 @@ private let LCgradientViewAnimationKey = "locations"
 class LCSlideToUnlockView: UIView {
     
     // MARK: - 属性
+    
+    /// 动画类型
+    public var slideAnimationStyle: slideAnimationType = .Default
+    
+    /// 是否开启往返动画
+    public var isEnableAutoreverses: Bool = false
     
     /// 文本标签
     private lazy var textLabel = UILabel()
@@ -58,6 +73,19 @@ class LCSlideToUnlockView: UIView {
         }
     }
     
+    /// 动画类型
+    public var AnimationStyle = slideAnimationType.Default {
+        didSet{     // 监听数值AnimationStyle的改变
+            if AnimationStyle == .Default{
+                gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+            }else {
+                gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+                gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+            }
+        }
+    }
+    
     /// 渐变图片 (跟 `colors` 只能设置一个)
     public var shimmerImage = UIImage(named: "gradient") {
         didSet{
@@ -83,7 +111,7 @@ class LCSlideToUnlockView: UIView {
     
     /// 字体
     public var font: UIFont = UIFont.systemFont(ofSize: 13) {
-        didSet {    // 监听数值font的改变
+        didSet {
             textLabel.font = font
         }
     }
@@ -121,9 +149,15 @@ extension LCSlideToUnlockView {
         // 渐变图层的锚点
         gradientLayer.anchorPoint = CGPoint.zero
         
-        // 设置渐变的开始点、结束点
-        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        // 设置不同动画类型渐变的开始点、结束点
+        switch AnimationStyle {
+        case .Default:
+            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+        case .DownAndUp:
+            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
+            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+        }
         
         // 设置渐变中的每一个渐变点.即渐变颜色数组
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
@@ -160,6 +194,8 @@ extension LCSlideToUnlockView {
         basicAnimation.isRemovedOnCompletion = false
         // 动画的填充模式, 返回到原点
         basicAnimation.fillMode = kCAFillModeForwards
+        // autoreverses: 属性会自动将动画恢复
+        basicAnimation.autoreverses = isEnableAutoreverses ? true : false
         
         // 3> 添加动画
         gradientLayer.add(basicAnimation, forKey: nil)
