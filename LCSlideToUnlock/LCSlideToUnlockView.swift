@@ -8,26 +8,26 @@
 
 import UIKit
 
-/// 动画类型
+/// 动画方向
 ///
-/// - Default: 默认(左到右)
-/// - DownAndUp: 从下到上
-enum slideAnimationType {
-    case Default
-    case DownAndUp
+/// - horizontal: 水平
+/// - vertical: 垂直
+/// - diagonalUp: 对角线往上
+/// - diagonalDown: 对角线往下
+public enum AnimationDirection {
+    case horizontal
+    case vertical
+    case diagonalUp
+    case diagonalDown
 }
 
 /// locations: 分割动画
 private let LCgradientViewAnimationKey = "locations"
 
 /// 滑动来解锁视图
-class LCSlideToUnlockView: UIView {
+open class LCSlideToUnlockView: UIView {
     
     // MARK: - 属性
-    
-    /// 动画类型
-    public var slideAnimationStyle: slideAnimationType = .Default
-    
     /// 是否开启往返动画
     public var isEnableAutoreverses: Bool = false
     
@@ -73,20 +73,27 @@ class LCSlideToUnlockView: UIView {
         }
     }
     
-    /// 动画类型
-    public var AnimationStyle = slideAnimationType.Default {
-        didSet{     // 监听数值AnimationStyle的改变
-            if AnimationStyle == .Default{
-                gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-                gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-            }else {
-                gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-                gradientLayer.endPoint = CGPoint(x: 1, y: 0)
+    /// 动画方向
+    public var animationDirection = AnimationDirection.horizontal {
+        didSet{                     // 监听数值animationDirection的改变
+            switch animationDirection {
+            case .horizontal:
+                gradientLayer.startPoint = CGPoint(x:0, y:0.5);
+                gradientLayer.endPoint = CGPoint(x:1.0, y:0.5);
+            case .vertical:
+                gradientLayer.startPoint = CGPoint(x:0.5, y:0);
+                gradientLayer.endPoint = CGPoint(x:0.5, y:1.0);
+            case .diagonalUp:
+                gradientLayer.startPoint = CGPoint(x:0, y:1.0);
+                gradientLayer.endPoint = CGPoint(x:1.0, y:0.0);
+            case .diagonalDown:
+                gradientLayer.startPoint = CGPoint(x:0, y:0.0);
+                gradientLayer.endPoint = CGPoint(x:1.0, y:1.0);
             }
         }
     }
     
-    /// 渐变图片 (跟 `colors` 只能设置一个)
+    /// 渐变图片 (跟`colors`只能设置一个)
     public var shimmerImage = UIImage(named: "gradient") {
         didSet{
             shimmerLayer.colors = nil
@@ -124,7 +131,7 @@ class LCSlideToUnlockView: UIView {
         configGradientLayer()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
@@ -149,16 +156,10 @@ extension LCSlideToUnlockView {
         // 渐变图层的锚点
         gradientLayer.anchorPoint = CGPoint.zero
         
-        // 设置不同动画类型渐变的开始点、结束点
-        switch AnimationStyle {
-        case .Default:
-            gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
-        case .DownAndUp:
-            gradientLayer.startPoint = CGPoint(x: 0, y: 1)
-            gradientLayer.endPoint = CGPoint(x: 1, y: 0)
-        }
-        
+        // 设置渐变的开始点、结束点
+        gradientLayer.startPoint = CGPoint(x: 0, y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1, y: 0.5)
+
         // 设置渐变中的每一个渐变点.即渐变颜色数组
         gradientLayer.colors = [UIColor.clear.cgColor, UIColor.white.cgColor, UIColor.clear.cgColor]
 

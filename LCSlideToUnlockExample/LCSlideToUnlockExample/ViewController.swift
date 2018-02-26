@@ -20,8 +20,8 @@ class ViewController: UIViewController {
         slideToUnlockView.shimmerColors = [.white, .white]
         //slideToUnlockView.shimmerImage = UIImage(named: "gradient")
         slideToUnlockView.font = UIFont.systemFont(ofSize: 20)
-        slideToUnlockView.AnimationStyle = .DownAndUp
-        slideToUnlockView.isEnableAutoreverses = true
+        slideToUnlockView.animationDirection = .horizontal
+        slideToUnlockView.isEnableAutoreverses = false
         slideToUnlockView.showFadeWithDuration(4)
         view.addSubview(slideToUnlockView)
     }
