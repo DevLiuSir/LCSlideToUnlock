@@ -27,7 +27,7 @@ private let LCgradientViewAnimationKey = "locations"
 /// 滑动来解锁视图
 open class LCSlideToUnlockView: UIView {
     
-    // MARK: - 属性
+    // MARK: - Attribute
     /// 是否开启往返动画
     public var isEnableAutoreverses: Bool = false
     
@@ -123,7 +123,7 @@ open class LCSlideToUnlockView: UIView {
         }
     }
     
-    // MARK: - 初始化方法
+    // MARK: - Init Method
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -136,7 +136,7 @@ open class LCSlideToUnlockView: UIView {
     }
 }
 
-// MARK: - Method
+// MARK: - Custom Method
 extension LCSlideToUnlockView {
     
     /// 创建UILabel
