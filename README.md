@@ -25,10 +25,9 @@
 
 ## Screencast from our Demo
 
-[![](https://github.com/ChinaHackers/LCSlideToUnlock/raw/master/Screencast/Screencast01.png)](http://v.youku.com/v_show/id_XMzQyNzI3MTgxMg==.html?spm=a2h3j.8428770.3416059.1)
-
-
-<img  src="https://github.com/ChinaHackers/LCSlideToUnlock/raw/master/Screencast/Screencast02.png" width="300">
+<div align=center> 
+<img src="https://github.com/ChinaHackers/LCSlideToUnlock/raw/master/Screencast/Screencast02.png" width="300">
+</div>
 
 
 ## Effect of collection
