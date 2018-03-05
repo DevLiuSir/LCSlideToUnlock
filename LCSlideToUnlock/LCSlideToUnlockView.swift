@@ -101,7 +101,7 @@ open class LCSlideToUnlockView: UIView {
         }
     }
     
-    /// 渐变颜色组 (最少两个元素, 跟 `gradientImage` 只能设置一个)
+    /// 渐变颜色组 (最少两个元素, 跟 `shimmerImage` 只能设置一个)
     public var shimmerColors = [UIColor.white, UIColor.white] {
         didSet {
             shimmerLayer.contents = nil
