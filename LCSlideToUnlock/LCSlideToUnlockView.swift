@@ -194,7 +194,7 @@ extension LCSlideToUnlockView {
         // 完成后是否删除动画
         basicAnimation.isRemovedOnCompletion = false
         // 动画的填充模式, 返回到原点
-        basicAnimation.fillMode = kCAFillModeForwards
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
         // autoreverses: 属性会自动将动画恢复
         basicAnimation.autoreverses = isEnableAutoreverses ? true : false
         
