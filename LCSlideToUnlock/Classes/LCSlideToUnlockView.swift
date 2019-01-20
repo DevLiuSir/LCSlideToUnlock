@@ -8,18 +8,6 @@
 
 import UIKit
 
-/// 动画方向
-///
-/// - horizontal: 水平
-/// - vertical: 垂直
-/// - diagonalUp: 对角线往上
-/// - diagonalDown: 对角线往下
-public enum AnimationDirection {
-    case horizontal
-    case vertical
-    case diagonalUp
-    case diagonalDown
-}
 
 /// locations: 分割动画
 private let LCgradientViewAnimationKey = "locations"
@@ -27,10 +15,7 @@ private let LCgradientViewAnimationKey = "locations"
 /// 滑动来解锁视图
 open class LCSlideToUnlockView: UIView {
     
-    // MARK: - Attribute
-    /// 是否开启往返动画
-    public var isEnableAutoreverses: Bool = false
-    
+    // MARK: - Private Attribute
     /// 文本标签
     private lazy var textLabel = UILabel()
 
@@ -59,6 +44,12 @@ open class LCSlideToUnlockView: UIView {
         self.contentLayer.addSublayer(layer)
         return layer
     }()
+    
+    
+    // MARK: - Public Attribute
+    
+    /// 是否开启往返动画
+    public var isEnableAutoreverses: Bool = false
     
     /// 文字
     public var textStr: String = "" {
@@ -136,7 +127,7 @@ open class LCSlideToUnlockView: UIView {
     }
 }
 
-// MARK: - Custom Method
+// MARK: - Private Method
 extension LCSlideToUnlockView {
     
     /// 创建UILabel
@@ -201,7 +192,12 @@ extension LCSlideToUnlockView {
         // 3> 添加动画
         gradientLayer.add(basicAnimation, forKey: nil)
     }
-  
+    
+}
+
+// MARK: - Public Method
+extension LCSlideToUnlockView {
+    
     /// 显示淡影淡出效果
     ///
     /// - Parameter du: 持续时长
@@ -210,5 +206,4 @@ extension LCSlideToUnlockView {
         gradientLayer.removeAllAnimations() // 移除动画,再添加
         configAnimation()
     }
-    
 }
