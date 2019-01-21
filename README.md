@@ -2,8 +2,8 @@
 ![](https://github.com/ChinaHackers/LCSlideToUnlock/raw/master/Screencast/LCSlideToUnlock.png)
 
 ![Languages](https://img.shields.io/badge/language-swift-orange.svg?style=flat)
-[![Swift  4.0.3](https://img.shields.io/badge/swift-4.0.3+-blue.svg?style=flat)](https://developer.apple.com/swift/)
-![xcode version](https://img.shields.io/badge/xcode-9+-yellow.svg)
+[![Swift  4.0.3](https://img.shields.io/badge/swift-5+-blue.svg?style=flat)](https://developer.apple.com/swift/)
+![xcode version](https://img.shields.io/badge/xcode-11+-yellow.svg)
 ![build ](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg)
 ![platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![https://github.com/ChinaHackers/LCSlideToUnlock/blob/master/LICENSE](https://img.shields.io/github/license/ChinaHackers/LCSlideToUnlock.svg)
@@ -19,9 +19,9 @@
 
 ## Requirements
 
-- iOS 11.2
-- Xcode 9.2
-- Swift 4.0.3+
+- iOS 13+
+- Xcode 11+
+- Swift 5.1+
 
 ## Screencast from our Demo
 
