@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.name         = "LCSlideToUnlock"
-  spec.version      = "5.0.0"
+  spec.version      = "5.1.2"
   spec.swift_version = "5.0"
   spec.summary      = "A simple slide to unlock iOS UI component."
 
