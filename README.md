@@ -2,8 +2,9 @@
 ![](https://github.com/ChinaHackers/LCSlideToUnlock/raw/master/Screencast/LCSlideToUnlock.png)
 
 ![Languages](https://img.shields.io/badge/language-swift-orange.svg?style=flat)
-[![Swift  4.0.3](https://img.shields.io/badge/swift-5+-blue.svg?style=flat)](https://developer.apple.com/swift/)
+[![swift version](https://img.shields.io/badge/swift-5+-blue.svg?style=flat)](https://developer.apple.com/swift/)
 ![xcode version](https://img.shields.io/badge/xcode-11+-yellow.svg)
+[![CocoaPods compatible](https://img.shields.io/cocoapods/v/LCSlideToUnlock.svg)](#cocoapods) 
 ![build ](https://img.shields.io/appveyor/ci/gruntjs/grunt/master.svg)
 ![platform](https://img.shields.io/badge/platform-ios-lightgrey.svg)
 ![https://github.com/ChinaHackers/LCSlideToUnlock/blob/master/LICENSE](https://img.shields.io/github/license/ChinaHackers/LCSlideToUnlock.svg)
@@ -72,6 +73,8 @@ public enum AnimationDirection {
 
 ```swift
 import UIKit
+import LCSlideToUnlock
+
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
