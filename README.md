@@ -69,6 +69,43 @@ public enum AnimationDirection {
 |  `shimmerColors`  |  The gradient color group (at least two elements, only one with `shimmerImage`)	|
 
 
+## Installation
+
+[CocoaPods](http://cocoapods.org/) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```swift
+$ gem install cocoapods
+```
+
+
+Just add the `LCSlideToUnlock` folder to your project.
+
+or use `CocoaPods` with Podfile:
+
+```swift
+pod 'LCSlideToUnlock'
+```
+
+You can use CocoaPods to install `LCSlideToUnlock` by adding it to your Podfile:
+
+
+```swift
+platform :ios, '12.0'
+target '<Your Target Name>' do
+use_frameworks!
+pod 'LCSlideToUnlock'
+end
+```
+
+
+
+Then, run the following command:
+
+```swift
+$ pod install
+```
+
+
 ## Example:
 
 ```swift
